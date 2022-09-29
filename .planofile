@@ -1,0 +1,26 @@
+import csv
+from dataclasses import replace
+from itertools import count
+
+@command
+def clean():
+    remove("build")
+
+
+@command
+def substitute():
+    """
+    Substitute links in adoc files using sub.csv
+    """
+    with open('sub.csv', newline='') as csvfile:
+        data = list(csv.reader(csvfile))
+    with working_dir('modules'):
+        #print(get_current_dir())
+        for path in find("./", "*.adoc"):
+            for i in range(len(data)):
+                antora_link = data[i][0]
+                link = data[i][1]
+                replace_in_file(path,antora_link,link,0)
+
+
+            
