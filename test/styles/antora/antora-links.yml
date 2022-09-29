@@ -5,4 +5,4 @@ link: https://github.com/pwright/debbie-downstream
 message: "Possible Antora link '%s'."
 nonword: true
 raw:
-  - 'xref(.*).adoc'
+  - 'xref(.*).adoc.*]'
