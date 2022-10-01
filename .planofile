@@ -1,8 +1,4 @@
 import csv
-from dataclasses import replace
-from itertools import count
-from posixpath import basename
-
 @command
 def clean():
     remove("build")
@@ -20,7 +16,7 @@ def substitute():
         # for each adoc file
         for path in find("./", "*.adoc"):
             # don't check nav.adoc files
-            if not (basename(path) == 'nav.adoc'):
+            if not (get_base_name(path) == 'nav.adoc'):
                 #use the contents of sub.csv and substitute text in each file
                 for i in range(len(data)):
                     antora_link = data[i][0]
